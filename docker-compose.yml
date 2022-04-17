@@ -9,6 +9,6 @@ services:
       dockerfile: ./Dockerfile
     
     volumes:
-      - /home/jack/docker/decider/data:/app/data
+      - /home/jack/demo/data:/app/data
     
-    entrypoint: ["python", "classifier.py"]
+    entrypoint: ["python", "classifer.py"]

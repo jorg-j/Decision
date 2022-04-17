@@ -7,9 +7,12 @@ class Monkey(object):
         self.run = False
 
     def ook(self):
-        stamp = os.stat(self.filename).st_mtime
-        if stamp != self._cached_stamp:
-            self._cached_stamp = stamp
-            self.run = True
-        else:
-            self.run = False
+        try:
+            stamp = os.stat(self.filename).st_mtime
+            if stamp != self._cached_stamp:
+                self._cached_stamp = stamp
+                self.run = True
+            else:
+                self.run = False
+        except:
+            pass

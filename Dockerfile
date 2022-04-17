@@ -14,7 +14,7 @@ RUN python -m pip install -r requirements.txt
 WORKDIR /app
 COPY . /app
 
-RUN apt update && apt install libatlas-base-dev graphviz -y && && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install libatlas-base-dev graphviz -y && rm -rf /var/lib/apt/lists/*
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["python", "train.py"]
