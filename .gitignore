@@ -4,3 +4,8 @@ bin/*
 include/*
 lib/*
 env/*
+.vscode/settings.json
+data/Cookies.csv
+data/decisiontree.png
+data/model.pk
+data/mapped.json

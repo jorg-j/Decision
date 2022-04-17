@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  decide:
+    container_name: decision
+    image: decider
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    
+    volumes:
+      - /home/jack/docker/decider/data:/app/data

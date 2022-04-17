@@ -1,0 +1,6 @@
+**/*.csv
+**/*.json
+**/*.pk
+env/*
+*.cfg
+*.gitignore
