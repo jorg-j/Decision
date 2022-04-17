@@ -10,3 +10,5 @@ services:
     
     volumes:
       - /home/jack/docker/decider/data:/app/data
+    
+    entrypoint: ["python", "classifier.py"]
