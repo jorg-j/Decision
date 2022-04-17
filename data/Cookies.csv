@@ -1,0 +1,9 @@
+Source,Size,Chips,Weight,Pass
+FactoryA,50,5,25,yes
+FactoryB,48,4,24.2,yes
+FactoryB,52,3,26.1,no
+FactoryA,51,2,22,no
+FactoryB,48,1,20,no
+FactoryA,55,6,25.1,yes
+FactoryB,56,6,25.3,no
+FactoryA,50,4,24.6,yes

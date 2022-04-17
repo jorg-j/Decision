@@ -1,0 +1,10 @@
+---
+data:
+  features:
+  - Source
+  - Size
+  - Chips
+  - Weight
+  result: Pass
+source: data/Cookies.csv
+input: data/new.csv

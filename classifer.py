@@ -1,36 +1,37 @@
-from tkinter.tix import DirTree
+# sudo apt-get install libatlas-base-dev
+# sudo apt-get install graphviz
+import json
+
+import pickle
+
 import pandas
-from sklearn import tree
-import pydotplus
-from sklearn.tree import DecisionTreeClassifier
-import matplotlib.pyplot as plt
-import matplotlib.image as pltimg
 
-df = pandas.read_csv("experience.csv")
+from utils.reclassify import restore
+from utils.yamlconf import readConfig
 
-print(df)
+config = readConfig("data/config.yml")
 
-# Map Countries to values
-d = {'UK': 0, 'USA': 1, 'N': 2}
-df['Nationality'] = df['Nationality'].map(d)
+df = pandas.read_csv(config.input)
 
-# map go no go to values
-d = {'YES': 1, 'NO': 0}
-df['Go'] = df['Go'].map(d)
+with open('data/mapped.json', 'r')as jsonfile:
+    data = json.load(jsonfile)
 
-features = ['Age', 'Experience', 'Rank', 'Nationality']
+remap_cols = data['Columns']
+
+for col in remap_cols:
+    if col != config.data['result']:
+        d = data[col]
+        df[col] = df[col].map(d)
+
+features = config.data['features']
 
 X = df[features]
-y = df['Go']
 
-dtree = DecisionTreeClassifier()
-dtree.fit(X, y)
-data = tree.export_graphviz(dtree, out_file=None, feature_names=features)
-graph = pydotplus.graph_from_dot_data(data)
-graph.write_png('mydecisiontree.png')
+with open('data/model.pk', 'rb')as f:
+    dtree = pickle.load(f)
 
-img=pltimg.imread('mydecisiontree.png')
-imgplot = plt.imshow(img)
-plt.show()
+outcome = dtree.predict(X)[0]
 
-print(dtree.predict([[44, 32, 8, 1]]))
+final_result = restore(config.data['result'], outcome)
+
+print(final_result)
