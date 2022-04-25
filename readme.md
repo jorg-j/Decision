@@ -93,6 +93,8 @@ source env/bin/activate
 pip3 install -r requirements.txt
 ```
 
+Important! You will also need to install libatlas-base-dev and graphviz to allow the decision tree image to be built
+
 ### Docker
 
 Set the local data storage location in `docker-compose.yml`
