@@ -9,10 +9,11 @@ import pydotplus
 from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier
 
-from utils.reclassify import unique
-from utils.yamlconf import readConfig
 from utils.jsontools import ReadJson
 from utils.modelTools import WriteModel
+from utils.reclassify import unique
+from utils.yamlconf import readConfig
+
 
 def remap_columns(df, data):
     """
@@ -36,9 +37,13 @@ def generate_decision_img(features, decision_tree):
     :param features: the names of the features in the dataset
     :param decision_tree: The decision tree object that we created in the previous step
     """
-    data = tree.export_graphviz(decision_tree, out_file=None, feature_names=features)
-    graph = pydotplus.graph_from_dot_data(data)
-    graph.write_png('data/decisiontree.png')
+    try:
+        data = tree.export_graphviz(decision_tree, out_file=None, feature_names=features)
+        graph = pydotplus.graph_from_dot_data(data)
+        graph.write_png('data/decisiontree.png')
+    except Exception as e:
+        print(e)
+        print("Unable to generate decisiontree.png. Please ensure libatlas-base-dev & graphviz are installed.")
 
 config = readConfig("data/config.yml")
 
