@@ -6,7 +6,7 @@ class Monkey(object):
         self.filename = file
         self.run = False
 
-    def ook(self):
+    def look_monkey(self):
         try:
             stamp = os.stat(self.filename).st_mtime
             if stamp != self._cached_stamp:

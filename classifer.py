@@ -76,4 +76,4 @@ if __name__ == "__main__":
         if watch.run:
             main()
 
-        watch.ook()
+        watch.look_monkey()
