@@ -60,6 +60,9 @@ def main():
     # Restore the outcome to match the result value
     final_result = restore(config.data["result"], outcome)
 
+    with open("data/result.txt", 'w+')as f:
+        f.write(final_result)
+
     print(final_result)
 
 
