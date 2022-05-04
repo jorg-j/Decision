@@ -4,7 +4,7 @@
 
 
 classify:
-	. env/bin/activate; python3 classifer.py
+	. env/bin/activate; python3 classifier.py
 
 
 train:
