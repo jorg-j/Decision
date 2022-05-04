@@ -118,3 +118,25 @@ entrypoint: ["python", "classifier.py"]
 ```
 
 `docker-compose up`
+
+
+## Sourcing via Webhook
+
+This relys on docker however you can use the same principle without it.
+
+First edit docker_extras/docker-compose.yml to point at the correct directory and port
+
+Then make the same directory change to docker-compose.yml at the root level.
+
+Once this is complete run.
+
+`make docker-train`
+`make service`
+
+This will build the docker image and container, train the model. Then make the webhook image and create the containers required to run.
+
+This the webhook can be called via the domain of the host system and the port of the container.
+
+`http://DOMAIN:9000/hooks/decide?var=Invoice`
+
+An example written in Python is included `docker_extras/example_call.py`
