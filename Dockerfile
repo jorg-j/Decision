@@ -17,4 +17,4 @@ COPY . /app
 RUN apt update && apt install libatlas-base-dev graphviz -y && rm -rf /var/lib/apt/lists/*
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["python", "train.py"]
+CMD ["python", "classifer.py"]

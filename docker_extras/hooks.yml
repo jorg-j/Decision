@@ -1,0 +1,14 @@
+
+- id: decide
+  execute-command: "/etc/webhook/decide.sh"
+  command-working-directory: "/etc/webhook/"
+  include-command-output-in-response: true
+  pass-arguments-to-command:
+  - source: url
+    name: Source
+  - source: url
+    name: Size
+  - source: url
+    name: Chips
+  - source: url
+    name: Weight

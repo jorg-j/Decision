@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  decide:
+    container_name: decision
+    image: decider
+
+    volumes:
+      - /home/jack/Documents/Test_Environments/Decision/data:/app/data
+
+  decisionhook:
+    container_name: decisionhook
+    image: deciderhook
+    environment:
+      - hooks:/etc/webhook/hooks.yml
+
+    volumes:
+      - /home/jack/Documents/Test_Environments/Decision/data:/app/data
+
+    ports:
+      - 9000:9000
+    
+
