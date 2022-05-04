@@ -10,6 +10,8 @@ classify:
 train:
 	. env/bin/activate; python3 train.py
 
+docker-train:
+	docker-compose up
 
 service:
 	docker build -t decider .
