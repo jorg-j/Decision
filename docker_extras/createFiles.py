@@ -1,6 +1,12 @@
 import yaml
 
 def readConfig(configFile):
+    """
+    It reads a YAML file and returns an object with the data
+    
+    :param configFile: the path to the config file
+    :return: A class object with the attributes of the yaml file.
+    """
     with open(configFile) as file:
         data = yaml.load(file, Loader=yaml.FullLoader)
 
