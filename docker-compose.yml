@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  decide:
+    container_name: decisiontool
+    image: decision:x86_64
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    
+    volumes:
+      - ./data:/app/data
+    
+    entrypoint: ["python", "train_tree.py"]
